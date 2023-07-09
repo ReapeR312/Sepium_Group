@@ -1,0 +1,309 @@
+@import "reset";
+@import "fonts";
+
+.wrap {
+	background: #f5f5f4;
+	height: 100vh;
+	width: 100vw;
+}
+.container {
+	margin: 0 auto;
+	max-width: 1330px;
+}
+.content {
+	display: flex;
+	flex-direction: column;
+	width: 80%;
+	margin: 0 auto;
+	height: 100%;
+}
+.title {
+	display: flex;
+	justify-content: space-between;
+	margin: 80px 0 50px 0;
+
+	// .title__slogan
+
+	&__slogan {
+		width: 252px;
+		height: 120px;
+		font-family: "Manrope";
+		font-style: normal;
+		font-weight: 600;
+		font-size: 14px;
+		line-height: 24px;
+		/* or 171% */
+
+		/* grey-text */
+
+		color: #787878;
+
+		/* Inside auto layout */
+
+		flex: none;
+		order: 0;
+		flex-grow: 0;
+	}
+
+	// .title__text
+
+	&__text {
+		font-family: "PT Sans Caption";
+		font-size: 58px;
+		line-height: 64px;
+		width: 882px;
+		margin: -8px 0 0 0;
+		color: #181818;
+	}
+}
+/* Ограничивающая оболочка */
+.slick-list {
+	overflow: hidden;
+}
+/* Лента слайдов */
+.slick-track {
+	display: flex;
+}
+/* Слайд */
+.slick-slide {
+	display: flex !important;
+	justify-content: center;
+	margin: 10px 0px;
+	div {
+		display: flex;
+	}
+}
+/* Слайд активный (показывается) */
+.slick-slide.slick-active div:first-child,
+.slick-slider__item .item__title,
+#img-1 {
+	transition: 0.4s ease-in-out;
+}
+
+.slick-slide.slick-active div:first-child {
+	border-radius: 20px;
+	&:hover {
+		box-shadow: 0 0 10px rgba(24, 24, 24, 0.05);
+
+		& .slick-slider__item .item__title {
+			color: #9cc91c;
+		}
+		& #img-1 {
+			transform: scale(1.03); /* Increase scale to zoom in by 20% */
+		}
+		& #img-2 {
+			background-image: url(images/1.png);
+		}
+		& #img-3 {
+			background-image: url(images/1.png);
+		}
+	}
+}
+#img {
+	&-1 {
+		height: 100%;
+		width: 100%;
+		background-image: url(images/1.png);
+	}
+	&-2 {
+		height: 100%;
+		width: 100%;
+		background-image: url(images/2.png);
+	}
+	&-3 {
+		height: 100%;
+		width: 100%;
+		background-image: url(images/3.png);
+	}
+}
+/* Стрелка */
+.slick-slider .slick-arrow {
+	position: absolute;
+	z-index: 10;
+	top: calc(50% - 23px);
+	font-size: 0;
+	width: 40px;
+	height: 40px;
+	background: #fff;
+}
+/* Стрелка влево */
+.slick-slider .slick-arrow.slick-prev {
+	// внешний круг
+	position: absolute;
+	z-index: 10;
+	top: calc(50% - 30px);
+	left: -20px;
+	width: 60px;
+	height: 60px;
+	background: #f5f5f4;
+	border-radius: 50%;
+
+	// стрелка
+	&::before {
+		content: "";
+		position: absolute;
+		top: 42%;
+		left: 45%;
+		width: 8px;
+		height: 8px;
+		border-top: 2.8px solid #181818;
+		border-radius: 0 10% 0 0;
+		border-right: 2.8px solid #181818;
+		background: none;
+		transform: rotate(-135deg);
+		z-index: 1;
+		transition: all 0.2s ease-out;
+	}
+	// внутренний круг
+	&::after {
+		content: "";
+		position: absolute;
+		top: 10px;
+		left: 10px;
+		width: 40px;
+		height: 40px;
+		background: rgb(255, 255, 255);
+		border-radius: 50%;
+		transition: all 0.2s ease-out;
+	}
+	&:hover::before {
+		border-top: 2.8px solid #fff;
+		border-right: 2.8px solid #fff;
+	}
+	&:hover::after {
+		background: #9cc91c;
+	}
+}
+/* Стрелка вправо */
+.slick-slider .slick-arrow.slick-next {
+	// внешний круг
+	right: -20px;
+	width: 60px;
+	height: 60px;
+	background: #f5f5f4;
+	border-radius: 50%;
+	// внутренний круг
+	&:after {
+		content: "";
+		top: 10px;
+		left: 10px;
+		position: absolute;
+		width: 40px;
+		height: 40px;
+		background: rgb(255, 255, 255);
+		border-radius: 50%;
+		transition: all 0.2s ease-out;
+	}
+	// стрелка
+	&:before {
+		content: "";
+		top: 45%;
+		left: 42%;
+		position: absolute;
+		width: 8px;
+		height: 8px;
+		border-top: 2.8px solid #181818;
+		border-radius: 0 10% 0 0;
+		border-right: 2.8px solid #181818;
+		background: none;
+		transform: rotate(42deg);
+		z-index: 1;
+		transition: all 0.2s ease-out;
+	}
+	&:hover::before {
+		border-top: 2.8px solid #fff;
+		border-right: 2.8px solid #fff;
+	}
+	&:hover::after {
+		background: #9cc91c;
+	}
+}
+
+.slick-slider {
+	display: flex;
+	position: relative;
+	// .slider__item
+
+	&__item {
+		display: flex !important;
+		flex-direction: column;
+		background: #fff;
+		border-radius: 20px;
+		max-width: 433px;
+		padding: 7px 7px 20px 7px;
+	}
+}
+.slick {
+	// .slick__slide
+
+	&__slide {
+		display: flex;
+		flex-direction: column;
+	}
+}
+.item {
+	// .item__image
+
+	&__image {
+		width: 419px;
+		height: 294px;
+		overflow: hidden;
+	}
+
+	// .item__title
+
+	&__title {
+		font-family: "Manrope";
+		font-size: 20px;
+		font-weight: 600;
+		line-height: 27px;
+		color: #181818;
+		margin: 20px 17px 0 17px;
+	}
+
+	// .item__location
+
+	&__location {
+		flex: 1 1 auto;
+		color: #787878;
+		margin: 10px 0 25px 17px;
+	}
+
+	// .item__btns
+
+	&__btns {
+		display: flex;
+		justify-content: space-between;
+		margin: 0 17px;
+	}
+
+	// .item__btn-get
+
+	&__btn-get {
+		color: #fff;
+		background: #9cc91c;
+		padding: 20px 25px 20px 25px;
+		border-radius: 15px;
+		&::after {
+			content: url(images/more/btn-get-before.png);
+			width: 6px;
+			height: 10px;
+			margin: 0 0 0 48px;
+		}
+	}
+
+	// .item__btn-detailed
+
+	&__btn-detailed {
+		color: #787878;
+		background: #f5f5f4;
+		padding: 20px 48px 20px 25px;
+		border-radius: 15px;
+		&::after {
+			content: url(images/more/btn-detailed-before.png);
+			width: 6px;
+			height: 10px;
+			margin: 0 0 0 48px;
+		}
+	}
+}
